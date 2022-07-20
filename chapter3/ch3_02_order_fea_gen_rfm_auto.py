@@ -21,20 +21,6 @@ func_trans = {'sum': np.sum,
               }
 
 
-def get_name_map(type_k, type_v):
-    """
-    类别变量取值含义，此处直接根据case给出(实际应用中会定制配置)
-    :param type_k: 待切分数据
-    :param type_v: 具体切分类别
-    :return:
-    """
-    if 'name_map' in globals():
-        new_name = name_map.get('%s_%s' % (type_k, type_v), '%s_%s' % (type_k, type_v))
-    else:
-        new_name = '%s_%s' % (type_k, type_v)
-    return new_name
-
-
 def apply_func(f, *args):
     return f(*args)
 
@@ -66,7 +52,7 @@ def rfm_cut(data, time_col, back_time, type_dict, comp_dict, time_arr, fea_prefi
                         func_v = func_trans.get(func_k, np.size)
                         # 对筛选出的数据, 在各统计指标上做聚合操作生成特征
                         fea_name = '%s_%s_%s_%s_%s' % (
-                            fea_prefix, col_time, get_name_map(type_k, item), col_comp, func_k)
+                            fea_prefix, col_time, '%s_%s' % (type_k, item), col_comp, func_k)
                         if data_cut.empty:
                             res_feas[fea_name] = np.nan
                         else:

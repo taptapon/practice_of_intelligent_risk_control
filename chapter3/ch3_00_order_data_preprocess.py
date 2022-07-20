@@ -13,7 +13,7 @@ from utils.data_utils import date_to_week
 def data_preprocess(data, time_col, back_time, dtypes_dict):
     """
     数据预处理函数
-    :param data，待处理的数据
+    :param data: 待处理的数据
     :param time_col: 回溯依据的时间列名称
     :param back_time: 特征计算时间，datetime.datetime时间格式
     :param dtypes_dict: 指定列字段类型的字典，如{'col1':int}
